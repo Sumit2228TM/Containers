@@ -37,3 +37,50 @@ else:
     print("Failed to create container")
     print(f"Error details: {container.text}")
     exit()
+
+multiple = session.post(f"{BASE_URL}/storage-containers/multiple",json=[
+    {
+        "name":"Sumit -20F1",
+        "noOfRows":2,
+        "noOfColumns":2,
+        "siteName":"Sumit Site A",
+        "positionAssignment":"HZ_TOP_DOWN_RIGHT_LEFT",
+        "typeID":83,
+        "usedFor":"STORAGE"
+    },
+    {
+        "name":"Sumit -20F2",
+        "noOfRows":2,
+        "noOfColumns":2,
+        "siteName":"Sumit Site A",
+        "positionAssignment":"HZ_TOP_DOWN_RIGHT_LEFT",
+        "typeID":83,
+        "usedFor":"STORAGE"
+    }
+])
+
+if multiple.status_code == 200:
+    print("Multiple Containers Created")
+else:
+    print("Failed to create muliple containers")
+    print(f"Error details: {multiple.text}")
+    exit()
+
+
+
+hierarchy = session.post(f"{BASE_URL}/storage-containers/create-hierarchy",json={
+    "names":[],
+    "noOfRows":3,
+    "noOfColumns":2,
+    "numOfContainers": 1,
+    "siteName":"Sumit Site A",
+    "typeId":144,
+    "usedFor":"STORAGE"
+})
+
+if hierarchy.status_code == 200:
+    print("Container Hierarchy Created")
+else:
+    print("Failed to create container hierarchy")
+    print(f"Error details: {hierarchy.text}")
+    exit()
