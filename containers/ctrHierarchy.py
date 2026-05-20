@@ -6,8 +6,8 @@ import requests
 import json
 
 BASE_URL   = "https://test.openspecimen.org/rest/ng"
-LOGIN_NAME = ""
-PASSWORD   = ""
+LOGIN_NAME = "*********"
+PASSWORD   = "*****"
 DOMAIN     = "openspecimen"
 
 session = requests.Session()
@@ -18,7 +18,7 @@ auth_response = session.post(f"{BASE_URL}/sessions", json={
     "password":  PASSWORD,
     "domain":    DOMAIN
 })
-    
+# this is for testing 
 auth = auth_response.json()
 session.headers.update({"X-OS-API-TOKEN": auth["token"]})
 
